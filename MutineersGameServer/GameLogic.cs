@@ -13,7 +13,8 @@ public class GameLogic
 
 	public static void Update()
 	{
-		DateTime timer = DateTime.Now;
+		Player.FixedUpdate();
+
 		if (!gameRunning)
 		{
 			Console.WriteLine("Waiting to start next round, hit enter to continue");

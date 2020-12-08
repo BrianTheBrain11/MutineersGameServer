@@ -38,14 +38,16 @@ public class Player
     }
 
     /// <summary>Processes player input and moves the player.</summary>
-    public void FixedUpdate()
+    public static void FixedUpdate()
     {
+        int health = 0;
+        
         if (health <= 0f)
         {
             return;
         }
 
-        Vector2 _inputDirection = Vector2.Zero;
+        /*Vector2 _inputDirection = Vector2.Zero;
         if (inputs[0])
         {
             _inputDirection.Y += 1;
@@ -61,9 +63,9 @@ public class Player
         if (inputs[3])
         {
             _inputDirection.X += 1;
-        }
+        }*/
 
-        Move(_inputDirection);
+        //Move(_inputDirection);
     }
 
     /// <summary>Calculates the player's desired movement direction and moves him.</summary>

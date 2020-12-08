@@ -9,7 +9,7 @@ public class ThreadManager
     private static readonly List<Action> executeCopiedOnMainThread = new List<Action>();
     private static bool actionToExecuteOnMainThread = false;
 
-    private void FixedUpdate()
+    private static void FixedUpdate()
     {
         UpdateMain();
     }
@@ -23,6 +23,8 @@ public class ThreadManager
             Console.WriteLine("No action to execute on main thread!");
             return;
         }
+
+        FixedUpdate();
 
         lock (executeOnMainThread)
         {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Numerics;
 using System;
+
 public class ServerHandle
 {
     public static void WelcomeReceived(int _fromClient, Packet _packet)
@@ -15,6 +16,17 @@ public class ServerHandle
             Console.WriteLine($"Player \"{_username}\" (ID: {_fromClient}) has assumed the wrong client ID ({_clientIdCheck})!");
         }
         Server.clients[_fromClient].SendIntoGame(_username);
+    }
+
+    public static void MessageServer(int _fromClient, Packet _packet)
+    {
+        string message = _packet.ReadString();
+        Server.clients[_fromClient].SendIntoGame(message);
+    }
+    public static void MessageReceived(int _fromClient, Packet _packet)
+    {
+        string _receivedMessage = _packet.ReadString();
+        Console.WriteLine("message");
     }
 
     public static void PlayerMovement(int _fromClient, Packet _packet)

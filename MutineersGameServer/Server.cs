@@ -54,6 +54,7 @@ public static class Server
 		}
 
 		Console.WriteLine($"{_client.Client.RemoteEndPoint} failed to connect: Server full!");
+		ServerHandle.MessageServer(0, new Packet());
 	}
 
 	/// <summary>Receives incoming UDP data.</summary>
@@ -130,7 +131,8 @@ public static class Server
 			{ (int)ClientPackets.welcomeReceived, ServerHandle.WelcomeReceived },
 			{ (int)ClientPackets.playerMovement, ServerHandle.PlayerMovement },
 			{ (int)ClientPackets.playerShoot, ServerHandle.PlayerShoot },
-			{ (int)ClientPackets.playerThrowItem, ServerHandle.PlayerThrowItem }
+			{ (int)ClientPackets.playerThrowItem, ServerHandle.PlayerThrowItem },
+			{ (int)ClientPackets.sendMessage, ServerHandle.MessageReceived }
 		};
 		Console.WriteLine("Initialized packets.");
 	}
